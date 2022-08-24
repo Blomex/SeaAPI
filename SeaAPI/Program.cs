@@ -2,6 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using SeaAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "MyAllowSpecificOrigins";
+
+builder.Services.AddCors(options => { 
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
+        policy.WithOrigins("https://localhost:7256/swagger/"); 
+    });
+});
 
 // Add services to the container.
 
@@ -22,6 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

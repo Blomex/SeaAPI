@@ -5,19 +5,18 @@ namespace SeaAPI.Models
     public class SeaRouteModel
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string From { get; set; }
+        public int Height{ get; set; }
         [Required]
-        public string To { get; set; }
+        public int Width { get; set; }
         [Required]
-        public string DimensionX { get; set; }
-
-        public string DimensionY { get; set; }
-        public string DimensionZ { get; set; }
+        public int Depth { get; set; }
         [Required]
-        public double Weight { get; set; }
+        public int Weight { get; set; }
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime StartDate { get; set; }
+        [Required]
+        public string Category { get; set; }
     }
 }
