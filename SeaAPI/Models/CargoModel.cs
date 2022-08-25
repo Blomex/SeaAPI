@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SeaAPI.Models
 {
-    public class SeaRouteModel
+    public class CargoModel
     {
         [Key]
         public int Id { get; set; }
