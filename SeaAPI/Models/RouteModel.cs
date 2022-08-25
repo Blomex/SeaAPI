@@ -15,6 +15,6 @@
         public string destination {  get; set; }
         public int cost { get; set; }
         public int time { get; set; }
-        TransportType transportType { get; set; }
+        public TransportType transportType { get; set; }
     }
 }

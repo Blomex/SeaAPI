@@ -9,6 +9,6 @@ namespace SeaAPI.Models
         {
         }
 
-        public DbSet<SeaRouteModel> SeaRoutes { get; set; } = null!;
+        public DbSet<RouteModel> SeaRoutes { get; set; } = null!;
     }
 }

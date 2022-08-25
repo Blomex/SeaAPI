@@ -26,7 +26,6 @@
 
                 edges.Add(new DirectRoute(shipRoute.source, shipRoute.destination, TransportType.OceanicAirlines),
                     value: new Edge(shipRoute.time + SHIP_TO_PLANE, shipRoute.cost, TransportType.EastIndiaCompany));
-
             }
             foreach (RouteModel route in carRoutes)
             {

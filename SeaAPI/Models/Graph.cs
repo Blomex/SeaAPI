@@ -1,7 +1,8 @@
 ﻿namespace SeaAPI.Models
 {
-    public interface Graph
+    public abstract class Graph
     {
-        List<RouteModel> findRoute(string source, string destination);
+        public abstract List<RouteModel> findRoute(string source, string destination);
+
     }
 }
