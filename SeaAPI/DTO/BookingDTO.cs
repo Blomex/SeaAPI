@@ -11,7 +11,7 @@
 
         public int cost { get; set; }
         public int time { get; set; }
-
+        public BookingDTO(){}
         public BookingDTO(int companyId, DateTime startDate, string source, string destination, DateTime arrivalDate, string category, int cost, int time)
         {
             this.companyId = companyId;

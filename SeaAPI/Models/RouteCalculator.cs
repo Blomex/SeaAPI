@@ -63,6 +63,30 @@ namespace SeaAPI.Models
         }
         List<RouteModel> retrieveCarRoutes(CargoWithRouteDTO cargo)
         {
+            /*
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(seaApiURL);
+            httpClient.DefaultRequestHeaders.Accept.Add(
+            new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            CargoDTO cargoDTO = new CargoDTO();
+            cargoDTO.StartDate = cargo.StartDate;
+            cargoDTO.Category = cargo.Category;
+            cargoDTO.DimensionX = cargo.DimensionX;
+            cargoDTO.DimensionY = cargo.DimensionY;
+            cargoDTO.DimensionZ = cargo.DimensionZ;
+            cargoDTO.Weight = cargo.Weight;
+            HttpResponseMessage response = httpClient.PostAsync(seaApiURL, JsonContent.Create<CargoDTO>(cargoDTO)).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            if (response.IsSuccessStatusCode)
+            {
+                // Parse the response body.
+                var jsonString = response.Content.ToString();
+                SeaRouteDTO[] seaRoutes = JsonConvert.DeserializeObject<SeaRouteDTO[]>(jsonString);
+                foreach(SeaRouteDTO r in seaRoutes)
+                {
+                    routes.Add(new RouteModel(r));
+                }
+            }
+            httpClient.Dispose();*/
             return new List<RouteModel>();
         }
         List<RouteModel> retrievePlaneRoutes(CargoWithRouteDTO cargo)

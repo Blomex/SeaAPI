@@ -2,7 +2,7 @@
 {
     public class CargoWithRouteDTO
     {
-        public int CompanyId { get; set; }
+        public int CompanyId { get; set; } = 1;
         public DateTime StartDate { get; set; }
         public int Weight { get; set; }
         public int DimensionX { get; set; }
