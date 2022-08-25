@@ -31,7 +31,7 @@ namespace SeaAPI.Domain
                         Category = CargoCategory.WEAPONS;
                         break;
                     }
-                case "live_animals":
+                case "animals":
                     {
                         Category = CargoCategory.LIVE_ANIMALS;
                         break;
