@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
                           policy.WithOrigins("https://wa-eit-dk1.azurewebsites.net/api/BookingModels",
-                                              "http://www.contoso.com");
+                                              "http://localhost:8080", "http://wa-eit-dk1.azurewebsites.net/api/BookingModels");
                       });
 });
 builder.Services.AddEndpointsApiExplorer();
