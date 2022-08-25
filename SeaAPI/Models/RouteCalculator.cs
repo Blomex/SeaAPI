@@ -20,7 +20,6 @@ namespace SeaAPI.Models
         string carApiURL = "";
         string planeApiURL = "";
         public RouteCalculator() { }
-
         List<RouteModel> retrieveShipRoutes(CargoModel cargo)
         {
             var routes = new List<RouteModel>();
