@@ -18,7 +18,7 @@ namespace SeaAPI.Migrations
                     startDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    arrivalDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    arrivalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     category = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

@@ -9,7 +9,7 @@ namespace SeaAPI.Models
         public DateTime startDate { get; set; }
         public string source { get; set; }
         public string destination { get; set; }
-        public string arrivalDate { get; set; }
+        public DateTime arrivalDate { get; set; }
         public string category { get; set; }
     }
 }

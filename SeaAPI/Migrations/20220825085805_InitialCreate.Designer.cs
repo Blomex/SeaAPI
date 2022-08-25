@@ -12,8 +12,8 @@ using SeaAPI.Models;
 namespace SeaAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220823153045_firstMigration")]
-    partial class firstMigration
+    [Migration("20220825085805_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace SeaAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SeaAPI.Models.SeaRouteModel", b =>
+            modelBuilder.Entity("SeaAPI.Models.BookingModel", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -32,35 +32,27 @@ namespace SeaAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("arrivalDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DimensionX")
+                    b.Property<string>("category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DimensionY")
+                    b.Property<string>("destination")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DimensionZ")
+                    b.Property<string>("source")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("From")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("To")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
+                    b.Property<DateTime>("startDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("id");
 
-                    b.ToTable("SeaRoutes");
+                    b.ToTable("BookingModel");
                 });
 #pragma warning restore 612, 618
         }

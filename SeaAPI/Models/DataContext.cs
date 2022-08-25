@@ -9,9 +9,6 @@ namespace SeaAPI.Models
            : base(options)
         {
         }
-
-        public DbSet<SeaRouteModel> SeaRoutes { get; set; } = null!;
-
         public DbSet<BookingModel> BookingModel { get; set; } = null!;
     }
 }
