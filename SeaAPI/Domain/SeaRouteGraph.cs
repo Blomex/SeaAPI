@@ -13,6 +13,8 @@
                 new SeaRoute("De Kanariske Oer", "Dakar", 5),
                 new SeaRoute("Dakar", "Sierra Leone", 3),
                 new SeaRoute("Dakar", "St. Helena", 10),
+                new SeaRoute("St. Helena", "Sierra Leone", 11),
+                new SeaRoute("Sierra Leone", "St. Helena", 11),
                 new SeaRoute("Sierra Leone", "Guld Kysten", 4),
                 new SeaRoute("Guld Kysten", "Slave Kysten", 4),
                 new SeaRoute("Slave Kysten", "Hvalbugten", 9),

@@ -33,7 +33,7 @@
                     new DirectRoute(route.source,
                     route.destination), out edge))
                 {
-                    if (edge.cost > route.cost)
+                    if (edge.time > route.time)
                     {
                         edges.Add(new DirectRoute(route.source, route.destination),
                     value: new Edge(route.time, route.cost, TransportType.Telstar));
@@ -49,7 +49,7 @@
                     new DirectRoute(route.source,
                     route.destination), out edge))
                 {
-                    if (edge.cost > route.cost)
+                    if (edge.time > route.time)
                     {
                         edges.Add(new DirectRoute(route.source, route.destination),
                     value: new Edge(route.time, route.cost, TransportType.Telstar));
