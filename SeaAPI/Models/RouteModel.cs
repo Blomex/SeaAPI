@@ -2,15 +2,14 @@
 {
     public class RouteModel
     {
-        public RouteModel(string v, string verticle, int cost, int time, TransportType transportType)
+        public RouteModel(string source, string destination, int cost, int time, TransportType transportType)
         {
-            this.source = v;
-            this.destination = verticle;
+            this.source = source;
+            this.destination = destination;
             this.cost = cost;
             this.time = time;
             this.transportType = transportType;
         }
-
         public string source { get; set; }
         public string destination {  get; set; }
         public int cost { get; set; }

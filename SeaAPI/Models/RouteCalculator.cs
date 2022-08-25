@@ -1,4 +1,5 @@
-﻿namespace SeaAPI.Models
+﻿using Newtonsoft.Json.Linq;
+namespace SeaAPI.Models
 {
     public class RouteCalculator
     {
@@ -13,6 +14,7 @@
         string planeApiURL = "";
         List<RouteModel> retrieveShipRoutes(CargoModel cargo)
         {
+            var routes = new List<RouteModel>();
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(seaApiURL);
             httpClient.DefaultRequestHeaders.Accept.Add(
@@ -21,25 +23,17 @@
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body.
-                var dataObjects = response.Content.ToString();// ReadAsStringAsync().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
-                //JsonConvert.DeserializeObject <[Your Class] > (responseString.Body.ToString());
-
-                /*foreach (var d in dataObjects)
+                var jsonString = response.Content.ToString();
+                JArray json = JArray.Parse(jsonString);
+                foreach(JObject jobject in json)
                 {
-                    //Console.WriteLine("{0}", d.Name);
+                    //TODO
                 }
+
+
             }
-            else
-            {
-                Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
-            }*/
-
-            // Make any other calls using HttpClient here.
-
-            // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             httpClient.Dispose();
-
-
+            return routes;
         }
         List<RouteModel> retrieveCarRoutes(CargoModel cargo)
         {

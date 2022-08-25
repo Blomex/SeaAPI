@@ -1,5 +1,5 @@
 ﻿using SeaAPI.Models;
-
+using Newtonsoft.Json.Linq;
 namespace SeaAPI
 {
     public class Booking
@@ -42,19 +42,14 @@ namespace SeaAPI
             HttpResponseMessage response = httpClient.GetAsync("").Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
             if (response.IsSuccessStatusCode)
             {
-               
-
-                return true;
+                JObject json = JObject.Parse(response.Content.ToString());
+                if(json.ContainsKey("id"))
+                {
+                    Console.WriteLine("booking done! id: {0}", json.GetValue("id"));
+                }
             }
-            else
-            {
-                return false;
-            }
-
-            // Make any other calls using HttpClient here.
-
-            // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             httpClient.Dispose();
+            return response.IsSuccessStatusCode;
         }
     }
 }
