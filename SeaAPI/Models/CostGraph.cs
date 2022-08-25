@@ -47,7 +47,7 @@
             }
         }
 
-        public List<RouteModel> findRoute(string source, string destination)
+        public override List<RouteModel> findRoute(string source, string destination)
         {
             Dictionary<string, int> dist = new Dictionary<string, int>();
             Dictionary<string, string> prev = new Dictionary<string, string>();
