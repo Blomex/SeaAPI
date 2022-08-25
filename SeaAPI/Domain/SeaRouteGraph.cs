@@ -4,7 +4,6 @@
     {
         public SeaRoute[] Routes { get; set; }
 
-
         public SeaRouteGraph()
         {
             Routes = new SeaRoute[]

@@ -36,7 +36,7 @@ namespace SeaAPI.Domain
                     Category = CargoCategory.LIVE_ANIMALS;
                     break;
                 }
-                case "catious_parcels":
+                case "cautious_parcels":
                 {
                     Category = CargoCategory.CAUTIOUS_PARCELS;
                     break;
@@ -50,6 +50,15 @@ namespace SeaAPI.Domain
                 {
                     Category = CargoCategory.PRISONERS_WITH_JOBS;
                     break;
+                }
+                case "abled_bodies":
+                {
+                    Category = CargoCategory.PRISONERS_WITH_JOBS;
+                    break;
+                }
+                default:
+                {
+                    throw new InvalidDataException("Such category does not exist.");
                 }
             }
         }

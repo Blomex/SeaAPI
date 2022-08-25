@@ -5,51 +5,50 @@ namespace SeaAPI.Services
 {
     public class SeaRouteCalculationService
     {
-        public List<SeaRouteDTO> GetSeaRoutesForCargo(CargoDTO cargoDTO)
+        public List<SeaRouteDTO> GetSeaRoutesForCargo(Cargo cargo)
         {
-            Cargo cargo = new Cargo(cargoDTO);
             SeaRouteGraph seaRouteGraph = new SeaRouteGraph();
             List<SeaRouteDTO> result = new List<SeaRouteDTO>();
 
             foreach (SeaRoute route in seaRouteGraph.Routes)
             {
                 int timeInMinutes = route.Time;
-                int costInDollars;
+                int costInCents;
 
-                if (cargo.StartDate.CompareTo(new DateTime(cargo.StartDate.Year, 4, 1)) > 0 
+                if (cargo.StartDate.CompareTo(new DateTime(cargo.StartDate.Year, 4, 30)) > 0 
                                 && cargo.StartDate.CompareTo(new DateTime(cargo.StartDate.Year, 11, 1)) < 0)
                 {
-                    costInDollars = 8;
+                    costInCents = 500 * route.NumberOfSegments;
                 } else
                 {
-                    costInDollars = 5;
+                    costInCents = 800 * route.NumberOfSegments;
                 }
 
                 switch (cargo.Category)
                 {
                     case CargoCategory.WEAPONS:
                     {
-                        costInDollars = (int) (costInDollars * 1.2);
+                        costInCents = (int) (costInCents * 1.2);
                         break;
                     }
                     case CargoCategory.LIVE_ANIMALS:
                     {
-                        costInDollars = (int) (costInDollars * 1.25);
+                        costInCents = (int) (costInCents * 1.25);
                         break;
                     }
                     case CargoCategory.REFRIGERATED_GOODS:
                     {
-                        costInDollars = (int) (costInDollars * 1.1);
+                        costInCents = (int) (costInCents * 1.1);
                         break;
                     }
                     case CargoCategory.PRISONERS_WITH_JOBS:
                     {
-                        costInDollars = (int) (costInDollars * 1.5);
+                        costInCents = (int) (costInCents * 1.5);
                         break;
                     }
                 }
 
-                result.Add(new SeaRouteDTO(route.Source, route.Destination, route.Time, costInDollars * 100));
+                result.Add(new SeaRouteDTO(route.Source, route.Destination, route.Time, costInCents));
             }
 
             return result;

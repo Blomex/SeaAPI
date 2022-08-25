@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Microsoft.EntityFrameworkCore;
+using SeaAPI.Domain;
 using SeaAPI.DTO;
 using SeaAPI.Models;
 using SeaAPI.Services;
+using System.Net.Mail;
 
 namespace SeaAPI.Controllers
 {
@@ -12,10 +15,36 @@ namespace SeaAPI.Controllers
     public class SeaRoutesController : ControllerBase
     {
         [HttpPost]
-        public List<SeaRouteDTO> GetSeaRoutesForAPackage(CargoDTO cargoDTO)
+        public IActionResult GetSeaRoutesForAPackage(CargoDTO cargoDTO)
         {
+            Cargo cargo;
+            try
+            {
+                cargo = new Cargo(cargoDTO);
+            } catch (InvalidDataException e)
+            {
+                return BadRequest(new { message = "Such category does not exist." });
+            }
             SeaRouteCalculationService service = new SeaRouteCalculationService();
-            return service.GetSeaRoutesForCargo(cargoDTO);
+
+            if (cargo.Category == CargoCategory.RECORDED_DELIVERY || cargo.Category == CargoCategory.CAUTIOUS_PARCELS)
+            {
+                return BadRequest(new { message = "Recorded deliveries and cautious parcels are not allowed." });
+            }
+
+            if (!(cargo.Weight > 0 && cargo.Weight < 101))
+            {
+                return BadRequest(new { message = "Cargo weight has to be > 0 and < 101." });
+            }
+
+            if (cargo.DimensionX <= 0 || cargo.DimensionY <=0 || cargo.DimensionZ <= 0) 
+            {
+                return BadRequest(new { message = "Cargo dimensions have to be > 0." });
+            }
+
+            List<SeaRouteDTO> results = service.GetSeaRoutesForCargo(cargo);
+
+            return Ok(results);
         }
     }
 }
