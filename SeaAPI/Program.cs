@@ -8,7 +8,7 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddCors(options =>
+/*builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
@@ -16,7 +16,9 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("https://wa-eit-dk1.azurewebsites.net/api/BookingModels",
                                               "http://localhost:8080", "http://wa-eit-dk1.azurewebsites.net/api/BookingModels");
                       });
-});
+});*/
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -31,7 +33,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(builder => builder
+     .AllowAnyOrigin()
+     .AllowAnyMethod()
+     .AllowAnyHeader());
+
+//app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(builder => builder.AllowAnyOrigin()
+     .AllowAnyMethod()
+     .AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
