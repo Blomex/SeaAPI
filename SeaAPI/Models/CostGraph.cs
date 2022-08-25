@@ -99,7 +99,7 @@
                     prev[verticle],
                     verticle,
                     edges.GetValueOrDefault(new DirectRoute(prev[verticle], verticle)).cost,
-                    edges.GetValueOrDefault(new DirectRoute(prev[verticle], verticle)).time + extraTime,
+                    edges.GetValueOrDefault(new DirectRoute(prev[verticle], verticle)).time,
                     edges.GetValueOrDefault(new DirectRoute(prev[verticle], verticle)).transportType
                 ));
                 verticle = prev[verticle];
