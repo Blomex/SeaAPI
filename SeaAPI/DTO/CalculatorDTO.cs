@@ -18,16 +18,17 @@ namespace SeaAPI.DTO
             DateTime arrivalDate = startDate;
             foreach(var route in routes)
             {
-                arrivalDate.AddMinutes(route.time);
-                bookings[i] = new BookingDTO(
-                    startDate,
-                    route.source,
-                    route.destination,
-                    arrivalDate,
-                    category);
+                arrivalDate = arrivalDate.AddMinutes(route.time);
+                bookings[i] = new BookingDTO();
+                bookings[i].startDate = startDate;
+                bookings[i].source = route.source;
+                bookings[i].destination = route.destination;
+                bookings[i].arrivalDate = arrivalDate;
+                bookings[i].category = category;
                 i++;
                 startDate = arrivalDate;
             }
+            this.arrivalDate = arrivalDate.ToString("d");
         }
     }
 }

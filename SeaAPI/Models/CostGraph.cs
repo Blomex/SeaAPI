@@ -61,6 +61,7 @@
             {
                 if(!v.Equals(source, StringComparison.OrdinalIgnoreCase))
                     dist[v] = int.MaxValue;
+                times[v] = 0;
                 pq.Enqueue(v, dist[v]);
             }
 
@@ -84,10 +85,15 @@
                     break;
                 }
             }
+
             string verticle = destination;
             List<RouteModel> routes = new List<RouteModel>();
+            time = 0;
+            cost = 0;
             while(verticle != source)
             {
+                time += edges.GetValueOrDefault(new DirectRoute(prev[verticle], verticle)).time;
+                cost += edges.GetValueOrDefault(new DirectRoute(prev[verticle], verticle)).cost;
                 routes.Add(new RouteModel(
                     prev[verticle],
                     verticle,

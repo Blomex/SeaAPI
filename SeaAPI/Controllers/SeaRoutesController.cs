@@ -42,7 +42,7 @@ namespace SeaAPI.Controllers
                 return BadRequest(new { message = "Cargo dimensions have to be > 0 (cm)." });
             }
 
-            List<SeaRouteDTO> results = service.GetSeaRoutesForCargo(cargo);
+            List<SeaRouteDTO> results = SeaRouteCalculationService.GetSeaRoutesForCargo(cargo);
 
             return Ok(results);
         }

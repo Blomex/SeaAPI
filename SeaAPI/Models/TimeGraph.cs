@@ -74,6 +74,7 @@
                     && !v.Equals(new Verticle(source, TransportType.Telstar))
                     && !v.Equals(new Verticle(source, TransportType.EastIndiaCompany)))
                 {
+                    cost[v] = 0;
                     dist[v] = int.MaxValue;
                 }
                 pq.Enqueue(v, dist[v]);
@@ -113,7 +114,7 @@
             int finalTime = int.MaxValue;
             foreach (TransportType type in (TransportType[])Enum.GetValues(typeof(TransportType)))
             {
-                if (dist[new Verticle(name: destination, type)] < finalTime) {
+                if (dist.GetValueOrDefault(new Verticle(name: destination, type), int.MaxValue) < finalTime) {
                     finalTime = dist[new Verticle(name: destination, type)];
                     this.cost = cost[new Verticle(name: destination, type)];
                     verticle = new Verticle(destination, type);
@@ -122,8 +123,8 @@
             this.time = finalTime;
             List<RouteModel> routes = new List<RouteModel>();
             while (!verticle.Equals(new Verticle(source, TransportType.Telstar))
-                || !verticle.Equals(new Verticle(source, TransportType.OceanicAirlines))
-                || !verticle.Equals(new Verticle(source, TransportType.EastIndiaCompany)))
+                && !verticle.Equals(new Verticle(source, TransportType.OceanicAirlines))
+                && !verticle.Equals(new Verticle(source, TransportType.EastIndiaCompany)))
             {
                 routes.Add(new RouteModel(
                     prev[verticle].name,

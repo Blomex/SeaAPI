@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SeaAPI.Domain;
 using SeaAPI.DTO;
 using SeaAPI.Models;
@@ -13,14 +14,16 @@ namespace SeaAPI.Controllers
     {
         // GET: api/<ValuesController>
         [HttpPost]
-        public IEnumerable<CalculatorDTO> GetRoutes(CargoWithRouteDTO cargoDTO)
+        public string GetRoutes(CargoWithRouteDTO cargoDTO)
         {
             RouteCalculator calculator = new RouteCalculator();
+            calculator.prepareToCalculate(cargoDTO);
             calculator.getRoutesForAllGraphs(cargoDTO.Source, cargoDTO.Destination);
             CalculatorDTO[] calculations = new CalculatorDTO[2];
-            calculations[0] = new CalculatorDTO(calculator.fastestTime, calculator.fastestCost, cargoDTO.StartDate, calculator.fastestRoute, Enum.GetName(typeof(CargoCategory), cargoDTO.Category));
-            calculations[1] = new CalculatorDTO(calculator.cheapestTime, calculator.cheapestCost, cargoDTO.StartDate, calculator.fastestRoute, Enum.GetName(typeof(CargoCategory), cargoDTO.Category));
-            return calculations;
+            calculations[0] = new CalculatorDTO(calculator.cheapestTime, calculator.cheapestCost, cargoDTO.StartDate, calculator.cheapestRoute, cargoDTO.Category);
+            calculations[1] = new CalculatorDTO(calculator.fastestTime, calculator.fastestCost, cargoDTO.StartDate, calculator.fastestRoute, cargoDTO.Category);
+
+            return JsonConvert.SerializeObject(calculations, Formatting.Indented);
 
         }
 

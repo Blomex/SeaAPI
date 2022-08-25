@@ -5,7 +5,7 @@ namespace SeaAPI.Services
 {
     public class SeaRouteCalculationService
     {
-        public List<SeaRouteDTO> GetSeaRoutesForCargo(Cargo cargo)
+        public static List<SeaRouteDTO> GetSeaRoutesForCargo(Cargo cargo)
         {
             SeaRouteGraph seaRouteGraph = new SeaRouteGraph();
             List<SeaRouteDTO> result = new List<SeaRouteDTO>();
