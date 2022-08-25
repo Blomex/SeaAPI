@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaAPI", "SeaAPI\SeaAPI.csproj", "{5ED4510A-FDFB-475B-99F5-A03D71339AC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{3BF7884B-A3E8-41D9-BCE1-28D65E5651BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5ED4510A-FDFB-475B-99F5-A03D71339AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ED4510A-FDFB-475B-99F5-A03D71339AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ED4510A-FDFB-475B-99F5-A03D71339AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF7884B-A3E8-41D9-BCE1-28D65E5651BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF7884B-A3E8-41D9-BCE1-28D65E5651BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF7884B-A3E8-41D9-BCE1-28D65E5651BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF7884B-A3E8-41D9-BCE1-28D65E5651BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

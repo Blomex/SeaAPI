@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SeaAPI.Models;
+using SeaAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -44,6 +45,7 @@ app.UseCors(builder => builder.AllowAnyOrigin()
      .AllowAnyHeader());
 
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
