@@ -5,7 +5,6 @@
         public string Source { get; set; }
         public string Destination { get; set; }
         public int Time { get; set; } // time in minutes
-        public int Cost { get; set; } // cost in cents
 
         public SeaRoute(string source, string destination, int numberOfStepsOnMap)
         {
