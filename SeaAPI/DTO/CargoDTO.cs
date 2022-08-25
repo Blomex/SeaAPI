@@ -1,20 +1,12 @@
 ﻿using SeaAPI.Domain;
+using SeaAPI.Utils;
+using System.Text.Json.Serialization;
 
 namespace SeaAPI.DTO
 {
     public class CargoDTO
     {
-        public CargoDTO(string startDate, int weight, int dimensionX, int dimensionY, int dimensionZ, string category)
-        {
-            StartDate = startDate;
-            Weight = weight;
-            DimensionX = dimensionX;
-            DimensionY = dimensionY;
-            DimensionZ = dimensionZ;
-            Category = category;
-        }
-
-        public string StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         public int Weight { get; set; }
         public int DimensionX { get; set; }
         public int DimensionY { get; set; }

@@ -1,4 +1,5 @@
-﻿using SeaAPI.DTO;
+﻿using Microsoft.Data.SqlClient.Server;
+using SeaAPI.DTO;
 
 namespace SeaAPI.Domain
 {
@@ -13,9 +14,7 @@ namespace SeaAPI.Domain
 
         public Cargo(CargoDTO cargoDTO)
         {
-            DateTime date = new DateTime();
-            //DateOnly.TryParseExact(cargoDTO.StartDate, "yyyy-dd-MM", out date);
-            StartDate = date;
+            StartDate = cargoDTO.StartDate;
             Weight = cargoDTO.Weight;
             DimensionX = cargoDTO.DimensionX;
             DimensionY = cargoDTO.DimensionY;
