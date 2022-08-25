@@ -30,12 +30,12 @@ namespace SeaAPI.Models
         List<RouteModel> retrieveShipRoutes(CargoWithRouteDTO cargo)
         {
             var routes = new List<RouteModel>();
-            //var seaRoutes = SeaRouteCalculationService.GetSeaRoutesForCargo(new Domain.Cargo(cargo));
-            //foreach (SeaRouteDTO r in seaRoutes)
-            //{
-            //    routes.Add(new RouteModel(r));
-            //}
-            
+            var seaRoutes = SeaRouteCalculationService.GetSeaRoutesForCargo(new Domain.Cargo(cargo));
+            foreach (SeaRouteDTO r in seaRoutes)
+            {
+                routes.Add(new RouteModel(r));
+            }
+            /*
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(seaApiURL);
             httpClient.DefaultRequestHeaders.Accept.Add(
@@ -62,7 +62,7 @@ namespace SeaAPI.Models
             {
                 return new List<RouteModel>();
             }
-            httpClient.Dispose();
+            httpClient.Dispose();*/
             return routes;
         }
         List<RouteModel> retrieveCarRoutes(CargoWithRouteDTO cargo)
