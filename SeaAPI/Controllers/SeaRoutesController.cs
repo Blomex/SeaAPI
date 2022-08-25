@@ -32,14 +32,14 @@ namespace SeaAPI.Controllers
                 return BadRequest(new { message = "Recorded deliveries and cautious parcels are not allowed." });
             }
 
-            if (!(cargo.Weight > 0 && cargo.Weight < 101))
+            if (!(cargo.Weight > 0 && cargo.Weight < 100001))
             {
-                return BadRequest(new { message = "Cargo weight has to be > 0 and < 101." });
+                return BadRequest(new { message = "Cargo weight has to be > 0 and < 100001 (grams)." });
             }
 
             if (cargo.DimensionX <= 0 || cargo.DimensionY <=0 || cargo.DimensionZ <= 0) 
             {
-                return BadRequest(new { message = "Cargo dimensions have to be > 0." });
+                return BadRequest(new { message = "Cargo dimensions have to be > 0 (cm)." });
             }
 
             List<SeaRouteDTO> results = service.GetSeaRoutesForCargo(cargo);
