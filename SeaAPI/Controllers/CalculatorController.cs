@@ -7,7 +7,7 @@ using SeaAPI.Models;
 
 namespace SeaAPI.Controllers
 {
-    [Route("api/calculate")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CalculatorController : ControllerBase
     {
@@ -30,12 +30,13 @@ namespace SeaAPI.Controllers
         {
             return "value";
         }
-        /*
-        // POST api/<ValuesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        
+        // GET api/<ValuesController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-        }*/
+            return new string[] { "hello", "world"};
+        }
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
