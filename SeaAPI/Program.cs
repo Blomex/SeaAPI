@@ -39,13 +39,7 @@ app.UseCors(builder => builder
      .AllowAnyMethod()
      .AllowAnyHeader());
 
-//app.UseCors(MyAllowSpecificOrigins);
-app.UseCors(builder => builder.AllowAnyOrigin()
-     .AllowAnyMethod()
-     .AllowAnyHeader());
-
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
