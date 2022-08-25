@@ -37,7 +37,7 @@ namespace SeaAPI.Controllers
                 return BadRequest(new { message = "Cargo weight has to be > 0 and < 100001 (grams)." });
             }
 
-            if (cargo.DimensionX <= 0 || cargo.DimensionY <=0 || cargo.DimensionZ <= 0) 
+            if (!(cargo.DimensionX > 0 && cargo.DimensionX < 401 && cargo.DimensionY > 0 && cargo.DimensionY < 401 && cargo.DimensionZ > 0 && cargo.DimensionZ < 401)) 
             {
                 return BadRequest(new { message = "Cargo dimensions have to be > 0 (cm)." });
             }
