@@ -20,14 +20,16 @@ namespace SeaAPI.Models
         string carApiURL = "";
         string planeApiURL = "";
         public RouteCalculator() { }
-        List<RouteModel> retrieveShipRoutes(CargoModel cargo)
+        List<RouteModel> retrieveShipRoutes(CargoWithRouteDTO cargo)
         {
             var routes = new List<RouteModel>();
+
+            
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(seaApiURL);
             httpClient.DefaultRequestHeaders.Accept.Add(
             new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = httpClient.GetAsync(seaApiURL).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            HttpResponseMessage response = httpClient.PostAsync(seaApiURL, JsonContent.Create<CargoDTO>(new CargoDTO(cargo))).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body.

@@ -12,5 +12,14 @@ namespace SeaAPI.DTO
         public int DimensionY { get; set; }
         public int DimensionZ { get; set; }
         public string Category { get; set; }
+        public CargoDTO(CargoWithRouteDTO cargo)
+        {
+            this.StartDate = cargo.StartDate;
+            this.Weight = cargo.Weight;
+            this.DimensionX = cargo.DimensionX;
+            this.DimensionY = cargo.DimensionY;
+            this.DimensionZ = cargo.DimensionZ;
+            this.Category = cargo.Category;
+        }
     }
 }
