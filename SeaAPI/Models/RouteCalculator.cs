@@ -20,12 +20,12 @@
         {
             throw new NotImplementedException();
         }
-        public void getRoutesForAllGraphs()
+        public void getRoutesForAllGraphs(string source, string destination)
         {
             TimeGraph timeGraph = new TimeGraph(this.shipRoutes, this.carRoutes, this.planeRoutes);
-            fastestRoute = timeGraph.findRoute();
+            fastestRoute = timeGraph.findRoute(source, destination);
             CostGraph costGraph = new CostGraph(this.shipRoutes, this.carRoutes, this.planeRoutes);
-            cheapestRoute = costGraph.findRoute();
+            cheapestRoute = costGraph.findRoute(source, destination);
         }
 
     }

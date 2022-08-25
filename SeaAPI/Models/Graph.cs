@@ -2,6 +2,6 @@
 {
     public interface Graph
     {
-        List<RouteModel> findRoute();
+        List<RouteModel> findRoute(string source, string destination);
     }
 }
