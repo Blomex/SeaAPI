@@ -4,9 +4,9 @@
     {
         Dictionary<DirectRoute, Edge> edges = new Dictionary<DirectRoute, Edge>();
         HashSet<Verticle> vertices = new HashSet<Verticle>();
-        const int SHIP_TO_SHIP = 30;
-        const int SHIP_TO_PLANE = 45;
-        const int SHIP_TO_CAR = 45;
+        const int SHIP_TO_SHIP = 0;
+        const int SHIP_TO_PLANE = 0;
+        const int SHIP_TO_CAR = 0;
         const int CAR_TO_CAR = 0;
         const int PLANE_TO_PLANE = 0;
         const int CAR_TO_PLANE = 0;

@@ -26,7 +26,6 @@
                 new SeaRoute("Kap Guardafui", "Suakin", 4),
                 new SeaRoute("Suakin", "Cairo", 4),
                 new SeaRoute("Cairo", "Tunis", 5),
-
                 new SeaRoute("Tanger", "Tunis", 3),
                 new SeaRoute("De Kanariske Oer","Tanger", 3),
                 new SeaRoute("Dakar", "De Kanariske Oer", 5),
@@ -39,7 +38,7 @@
                 new SeaRoute("Kapstaden", "St. Helena", 9),
                 new SeaRoute("Kapstaden","Hvalbugten", 3),
                 new SeaRoute("Kap St. Marie","Kapstaden",  8),
-                new SeaRoute("Mocambique","Kap St. Marie", 3),
+                new SeaRoute("Mocambique", "Kap St. Marie", 3),
                 new SeaRoute("Kap Guardafui", "Amatave", 8),
                 new SeaRoute("Kap Guardafui", "Mocambique", 8),
                 new SeaRoute("Suakin", "Kap Guardafui", 4),
