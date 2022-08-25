@@ -2,6 +2,8 @@
 {
     public class CostGraph : Graph
     {
+        public int time { get; set; }
+        public int cost { get; set; }
         Dictionary<DirectRoute, Edge> edges = new Dictionary<DirectRoute, Edge>();
         HashSet<string> vertices = new HashSet<string>();
 
@@ -14,6 +16,7 @@
                 edges.Add(new DirectRoute(shipRoute.source, shipRoute.destination),
                     value: new Edge(shipRoute.time, shipRoute.cost, TransportType.EastIndiaCompany));
             }
+
             foreach (RouteModel route in carRoutes)
             {
                 vertices.Add(route.source);
@@ -50,6 +53,7 @@
         public override List<RouteModel> findRoute(string source, string destination)
         {
             Dictionary<string, int> dist = new Dictionary<string, int>();
+            Dictionary<string, int> times = new Dictionary<string, int>();
             Dictionary<string, string> prev = new Dictionary<string, string>();
             PriorityQueue<string, int> pq = new PriorityQueue<string, int>();
             dist[source] = 0;
@@ -69,6 +73,7 @@
                         if (alt < dist[v])
                         {
                             dist[v] = alt;
+                            times[v] = times[current] + edge.time;
                             prev[v] = current;
                             pq.Enqueue(v, alt);
                         }

@@ -10,11 +10,17 @@ namespace SeaAPI.Models
         List<RouteModel> shipRoutes;
         List<RouteModel> planeRoutes;
         List<Graph> graphs;
-        List<RouteModel> fastestRoute;
-        List<RouteModel> cheapestRoute;
+        public List<RouteModel> fastestRoute { get; set; }
+        public List<RouteModel> cheapestRoute { get; set; }
+        public int fastestTime {get; set;}
+        public int fastestCost { get; set; }
+        public int cheapestTime { get; set; }
+        public int cheapestCost { get; set; }
         string seaApiURL = "";
         string carApiURL = "";
         string planeApiURL = "";
+        public RouteCalculator() { }
+
         List<RouteModel> retrieveShipRoutes(CargoModel cargo)
         {
             var routes = new List<RouteModel>();
@@ -50,6 +56,10 @@ namespace SeaAPI.Models
             fastestRoute = timeGraph.findRoute(source, destination);
             CostGraph costGraph = new CostGraph(this.shipRoutes, this.carRoutes, this.planeRoutes);
             cheapestRoute = costGraph.findRoute(source, destination);
+            fastestCost = timeGraph.cost;
+            fastestTime = timeGraph.time;
+            cheapestCost = costGraph.cost;
+            cheapestTime = costGraph.time;
         }
 
     }
