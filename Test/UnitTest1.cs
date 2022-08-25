@@ -1,6 +1,7 @@
 
 using Newtonsoft.Json.Linq;
 using SeaAPI.Models;
+using System.Net.Http.Json;
 
 namespace Test
 {
@@ -42,7 +43,8 @@ namespace Test
             }
 
             httpClient.DefaultRequestHeaders.Accept.Add(
-            new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
             HttpResponseMessage response = httpClient.PostAsync(httpClient.BaseAddress, new StringContent("{\"startDate\":\"2022-08-25T08:15:30-05:00\",\"source\":\"Kongo\",\"destination\":\"Cairo2\",\"arrivalDate\": \"2022-08-28T08:15:30-05:00\",\"category\":\"weapons\"}")).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
             if (response.IsSuccessStatusCode)
             {
