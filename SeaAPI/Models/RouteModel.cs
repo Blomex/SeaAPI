@@ -1,4 +1,6 @@
-﻿namespace SeaAPI.Models
+﻿using SeaAPI.DTO;
+
+namespace SeaAPI.Models
 {
     public class RouteModel
     {
@@ -9,6 +11,14 @@
             this.cost = cost;
             this.time = time;
             this.transportType = transportType;
+        }
+        public RouteModel(SeaRouteDTO route)
+        {
+            this.source = route.Source;
+            this.destination = route.Destination;
+            this.cost = route.Cost;
+            this.time = route.Time;
+            this.transportType = TransportType.EastIndiaCompany;
         }
         public string source { get; set; }
         public string destination {  get; set; }

@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using SeaAPI.DTO;
+
 namespace SeaAPI.Models
 {
     public class RouteCalculator
@@ -19,18 +22,16 @@ namespace SeaAPI.Models
             httpClient.BaseAddress = new Uri(seaApiURL);
             httpClient.DefaultRequestHeaders.Accept.Add(
             new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = httpClient.GetAsync("").Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            HttpResponseMessage response = httpClient.GetAsync(seaApiURL).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body.
                 var jsonString = response.Content.ToString();
-                JArray json = JArray.Parse(jsonString);
-                foreach(JObject jobject in json)
+                SeaRouteDTO[] seaRoutes = JsonConvert.DeserializeObject<SeaRouteDTO[]>(jsonString);
+                foreach(SeaRouteDTO r in seaRoutes)
                 {
-                    //TODO
+                    routes.Add(new RouteModel(r));
                 }
-
-
             }
             httpClient.Dispose();
             return routes;

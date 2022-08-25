@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SeaAPI.Models;
 
 namespace SeaAPI.Models
 {
@@ -8,7 +9,6 @@ namespace SeaAPI.Models
            : base(options)
         {
         }
-
-        public DbSet<RouteModel> SeaRoutes { get; set; } = null!;
+        public DbSet<BookingModel> BookingModel { get; set; } = null!;
     }
 }

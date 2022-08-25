@@ -20,12 +20,12 @@
         {
             return source.GetHashCode() +7* destination.GetHashCode() + 17 * transportType.GetHashCode();
         }
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return Equals(obj as DirectRoute);
         }
 
-        public bool Equals(DirectRoute obj)
+        public bool Equals(DirectRoute? obj)
         {
             return obj != null 
                 && this.source.Equals(obj.source, StringComparison.OrdinalIgnoreCase)

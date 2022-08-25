@@ -13,7 +13,7 @@
         {
             return name.GetHashCode() + 17 * transportType.GetHashCode();
         }
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return Equals(obj as Verticle);
         }
