@@ -55,6 +55,10 @@ namespace SeaAPI.Models
             fastestRoute = timeGraph.findRoute(source, destination);
             CostGraph costGraph = new CostGraph(this.shipRoutes, this.carRoutes, this.planeRoutes);
             cheapestRoute = costGraph.findRoute(source, destination);
+            fastestCost = timeGraph.cost;
+            fastestTime = timeGraph.time;
+            cheapestCost = costGraph.cost;
+            cheapestTime = costGraph.time;
         }
 
     }

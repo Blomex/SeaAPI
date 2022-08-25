@@ -58,11 +58,15 @@
         public override List<RouteModel> findRoute(string source, string destination)
         {
             Dictionary<Verticle, int> dist = new Dictionary<Verticle, int>();
+            Dictionary<Verticle, int> cost = new Dictionary<Verticle, int>();
             Dictionary<Verticle, Verticle> prev = new Dictionary<Verticle, Verticle>();
             PriorityQueue<Verticle, int> pq = new PriorityQueue<Verticle, int>();
             dist[new Verticle(source, TransportType.EastIndiaCompany)] = 0;
             dist[new Verticle(source, TransportType.Telstar)] = 0;
             dist[new Verticle(source, TransportType.OceanicAirlines)] = 0;
+            cost[new Verticle(source, TransportType.EastIndiaCompany)] = 0;
+            cost[new Verticle(source, TransportType.Telstar)] = 0;
+            cost[new Verticle(source, TransportType.OceanicAirlines)] = 0;
 
             foreach (Verticle v in vertices)
             {
@@ -86,10 +90,11 @@
                     foreach(TransportType type in (TransportType[]) Enum.GetValues(typeof(TransportType))){
                         if (edges.TryGetValue(new DirectRoute(current.name, v.name, type), out edge))
                         {
-                            int alt = dist[current] + edge.cost;
+                            int alt = dist[current] + edge.time;
                             if (alt < dist[v])
                             {
                                 dist[v] = alt;
+                                cost[v] = cost[current] + edge.cost;
                                 prev[v] = current;
                                 pq.Enqueue(v, alt);
                             }
@@ -110,9 +115,11 @@
             {
                 if (dist[new Verticle(name: destination, type)] < finalTime) {
                     finalTime = dist[new Verticle(name: destination, type)];
+                    this.cost = cost[new Verticle(name: destination, type)];
                     verticle = new Verticle(destination, type);
                 }
             }
+            this.time = finalTime;
             List<RouteModel> routes = new List<RouteModel>();
             while (!verticle.Equals(new Verticle(source, TransportType.Telstar))
                 || !verticle.Equals(new Verticle(source, TransportType.OceanicAirlines))
