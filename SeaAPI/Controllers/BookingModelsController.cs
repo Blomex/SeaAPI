@@ -22,13 +22,13 @@ namespace SeaAPI.Controllers
 
         // GET: api/BookingModels
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BookingModel>>> GetBookingModel()
+        public async Task<ActionResult<IEnumerable<BookingModel>>> GetBookingModels([FromQuery(Name = "companyId")] int companyId = 1)
         {
           if (_context.BookingModel == null)
           {
-              return NotFound();
+            return NotFound();
           }
-            return await _context.BookingModel.ToListAsync();
+          return await _context.BookingModel.Where(b => b.companyId == companyId).ToListAsync();
         }
 
         // GET: api/BookingModels/5

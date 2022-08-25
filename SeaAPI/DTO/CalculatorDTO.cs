@@ -9,7 +9,7 @@ namespace SeaAPI.DTO
         public string arrivalDate;
         public BookingDTO[] bookings;
 
-        public CalculatorDTO(int time, int cost, DateTime startDate, List<RouteModel> routes, string category)
+        public CalculatorDTO(int companyId, int time, int cost, DateTime startDate, List<RouteModel> routes, string category)
         {
             this.time = time;
             this.cost = cost;
@@ -20,11 +20,15 @@ namespace SeaAPI.DTO
             {
                 arrivalDate.AddMinutes(route.time);
                 bookings[i] = new BookingDTO(
+                    companyId,
                     startDate,
                     route.source,
                     route.destination,
                     arrivalDate,
-                    category);
+                    category,
+                    cost,
+                    time
+                );
                 i++;
                 startDate = arrivalDate;
             }

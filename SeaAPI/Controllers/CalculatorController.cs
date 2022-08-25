@@ -18,8 +18,8 @@ namespace SeaAPI.Controllers
             RouteCalculator calculator = new RouteCalculator();
             calculator.getRoutesForAllGraphs(cargoDTO.Source, cargoDTO.Destination);
             CalculatorDTO[] calculations = new CalculatorDTO[2];
-            calculations[0] = new CalculatorDTO(calculator.fastestTime, calculator.fastestCost, cargoDTO.StartDate, calculator.fastestRoute, Enum.GetName(typeof(CargoCategory), cargoDTO.Category));
-            calculations[1] = new CalculatorDTO(calculator.cheapestTime, calculator.cheapestCost, cargoDTO.StartDate, calculator.fastestRoute, Enum.GetName(typeof(CargoCategory), cargoDTO.Category));
+            calculations[0] = new CalculatorDTO(cargoDTO.CompanyId, calculator.fastestTime, calculator.fastestCost, cargoDTO.StartDate, calculator.fastestRoute, Enum.GetName(typeof(CargoCategory), cargoDTO.Category));
+            calculations[1] = new CalculatorDTO(cargoDTO.CompanyId, calculator.cheapestTime, calculator.cheapestCost, cargoDTO.StartDate, calculator.fastestRoute, Enum.GetName(typeof(CargoCategory), cargoDTO.Category));
             return calculations;
 
         }
