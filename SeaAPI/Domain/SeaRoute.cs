@@ -2,16 +2,16 @@
 {
     public class SeaRoute
     {
-        public string source;
-        public string destination;
-        public int time; // time in minutes
-        public int cost; // cost in cents
+        public string Source { get; set; }
+        public string Destination { get; set; }
+        public int Time { get; set; } // time in minutes
+        public int Cost { get; set; } // cost in cents
 
         public SeaRoute(string source, string destination, int numberOfStepsOnMap)
         {
-            this.source = source;
-            this.destination = destination;
-            this.time = numberOfStepsOnMap * 12 * 60;
+            Source = source;
+            Destination = destination;
+            Time = numberOfStepsOnMap * 12 * 60; // number of steps times 12 hours time 60 minutes
         }
     }
 }
