@@ -29,7 +29,7 @@ namespace SeaAPI.Models
             httpClient.BaseAddress = new Uri(seaApiURL);
             httpClient.DefaultRequestHeaders.Accept.Add(
             new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = httpClient.PostAsync(seaApiURL, JsonContent.Create<CargoDTO>(new CargoDTO(cargo))).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            HttpResponseMessage response = null;// httpClient.PostAsync(seaApiURL, JsonContent.Create<CargoDTO>(new CargoDTO(cargo))).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body.
