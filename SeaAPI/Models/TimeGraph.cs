@@ -13,6 +13,50 @@
         public int time{get; set;}
         public int cost { get; set;}
 
+
+        public TimeGraph(List<RouteModel> shipRoutes, List<RouteModel> carRoutes, List<RouteModel> planeRoutes)
+        {
+            foreach (RouteModel shipRoute in shipRoutes)
+            {
+                vertices.Add(shipRoute.source);
+                vertices.Add(shipRoute.destination);
+                edges.Add(new DirectRoute(shipRoute.source, shipRoute.destination),
+                    value: new Edge(shipRoute.time, shipRoute.cost, TransportType.EastIndiaCompany));
+            }
+
+            foreach (RouteModel route in carRoutes)
+            {
+                vertices.Add(route.source);
+                vertices.Add(route.destination);
+                Edge edge = null;
+                if (edges.TryGetValue(
+                    new DirectRoute(route.source,
+                    route.destination), out edge))
+                {
+                    if (edge.cost > route.cost)
+                    {
+                        edges.Add(new DirectRoute(route.source, route.destination),
+                    value: new Edge(route.time, route.cost, TransportType.Telstar));
+                    }
+                }
+            }
+            foreach (RouteModel route in planeRoutes)
+            {
+                vertices.Add(route.source);
+                vertices.Add(route.destination);
+                Edge edge;
+                if (edges.TryGetValue(
+                    new DirectRoute(route.source,
+                    route.destination), out edge))
+                {
+                    if (edge.cost > route.cost)
+                    {
+                        edges.Add(new DirectRoute(route.source, route.destination),
+                    value: new Edge(route.time, route.cost, TransportType.Telstar));
+                    }
+                }
+            }
+        }
         public override List<RouteModel> findRoute(string source, string destination)
         {
             Dictionary<string, int> dist = new Dictionary<string, int>();
@@ -72,8 +116,8 @@
             return routes;
         }
     }
-    /*
-    public TimeGraph(List<RouteModel> shipRoutes, List<RouteModel> carRoutes, List<RouteModel> planeRoutes)
+    
+    /*public TimeGraph(List<RouteModel> shipRoutes, List<RouteModel> carRoutes, List<RouteModel> planeRoutes)
     {
         foreach (RouteModel shipRoute in shipRoutes)
         {
@@ -115,7 +159,7 @@
                 value: new Edge(route.time + PLANE_TO_PLANE, route.cost, TransportType.OceanicAirlines));
         }
     }
-
+    
     public override List<RouteModel> findRoute(string source, string destination)
     {
         Dictionary<Verticle, int> dist = new Dictionary<Verticle, int>();
