@@ -6,8 +6,17 @@
         List<RouteModel> shipRoutes;
         List<RouteModel> planeRoutes;
         List<Graph> graphs;
-        List<RouteModel> fastestRoute;
-        List<RouteModel> cheapestRoute;
+        public List<RouteModel> fastestRoute { get; set; }
+        public List<RouteModel> cheapestRoute { get; set; }
+        public int fastestTime {get; set;}
+        public int fastestCost { get; set; }
+        public int cheapestTime { get; set; }
+        public int cheapestCost { get; set; }
+        string seaApiURL = "";
+        string carApiURL = "";
+        string planeApiURL = "";
+        public RouteCalculator() { }
+
         List<RouteModel> retrieveShipRoutes(CargoModel cargo)
         {
             throw new NotImplementedException();
