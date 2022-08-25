@@ -25,8 +25,8 @@ namespace SeaAPI.DTO
                 bookings[i].destination = route.destination;
                 bookings[i].arrivalDate = arrivalDate;
                 bookings[i].category = category;
-                bookings[i].cost = cost;
-                bookings[i].time = time;
+                bookings[i].cost = route.cost;
+                bookings[i].time = route.time;
                 bookings[i].companyId = companyId;
 
                 i++;
